@@ -9,9 +9,9 @@ const webpack = require('webpack')
 // vue-template-compiler用于编译模板
 // 引入插件会根据package.json中的main属性来进行查找对应文件路径
 // 例如
-// const { VueLoaderPlugin } = require('vue-loader/dist/index')
-const { VueLoaderPlugin } = require('vue-loader')
-console.log(VueLoaderPlugin)
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
+// const { VueLoaderPlugin } = require('vue-loader')
+// console.log(VueLoaderPlugin)
 
 module.exports = {
   mode: 'development',

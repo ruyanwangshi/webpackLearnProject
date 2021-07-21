@@ -1,5 +1,6 @@
 // import Vue.default from 'vue';
-const { Vue } = require('vue')
+// const { Vue } = require('vue')
+import Vue from 'vue';
 console.log(Vue)
 import App from './App'
 // new Vue({
