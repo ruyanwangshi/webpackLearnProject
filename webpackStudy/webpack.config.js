@@ -91,6 +91,29 @@ module.exports = {
   },
 };
 
+// 模块解析
+// 引用模块require/import来进行导入。当打包时候：webpack使用 enhanced-resolve 来解析文件路径
+// webpack中的解析规则
+// 使用：enhanced-resolve，webpack能够解析三种文件路径
+// 1.绝对路径
+// 例如：import "/home/me/file"; import "C:\\Users\\me\\file"; 不需要进一步解析路径
+
+// 2.相对路径
+// 例如：import "../src/file1"; import "./file2";
+// 备注：在这种情况下， 使用import或require的资源文件(resource file)所在的目录被任务是上下文目录(context diretory).
+// 在import/require中给定的相对路径，会添加此上下文路径(context path),以产生模块的绝对路径(absolute path).
+
+// 3.模块路径
+// 例如：import "module"; import "module/lib/file";
+// 备注：模块将在resolve.module中指定的所有目录内搜索。可以替换初始模块路径，此替换路径通过使用resolve.alias配置选项来创建一个别名。
+// resolve.mainFields配置选项中指定的字段。并且package.json中的第一个这样的字段确定文件路径。
+// resolve.mainFields: type: array
+// mainFields: ["browser","module","main"], // 当target属性设置为webpacker，web或者没有指定，指定该默认值默认值；
+// mainFields:["module", "main"] // 对于其它默认值的target(包括node),设置该默认值
+// 例如：test
+
+
+
 // 导出配置：
 // 1.导出函数
 // 区分开发环境
