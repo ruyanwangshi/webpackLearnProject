@@ -1,4 +1,4 @@
-import './css/test.css'
+import './css/index.css'
 import './testJs/test.ts'
 
 // 测试可选链
@@ -36,7 +36,7 @@ function step(gen) {
   }
 }
 
-let a = 1,b = 2;
+// let a = 1,b = 2;
 const s1 = step(foo)
 const s2 = step(bar)
 

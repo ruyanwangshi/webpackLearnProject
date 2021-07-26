@@ -53,7 +53,7 @@ module.exports = {
     // 生产环境：Server部署下HeroKu但是图片在CDN上
     //   .image {
     //     background-image: url('https://someCDN/test.png');
-    publicPath: "http://cdn.example.com/assets/[hash]", // 主要用于配置引入css或图片资源路径的配置
+    // publicPath: "http://cdn.example.com/assets/[hash]", // 主要用于配置引入css或图片资源路径的配置
   },
 
   // loader 对于模块进行转换。loader可以使你在import或“加载”模块时预处理文件。
@@ -66,7 +66,23 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", {
+          loader: "css-loader",
+          options: {
+            importLoaders: 0
+          }
+        }, {
+          loader: "postcss-loader",
+          // options: {
+          //   postcssOptions: {
+          //     plugins: [
+          //       // require("autoprefixer")
+          //       // require('postcss-preset-env')
+          //       "postcss-preset-env"
+          //     ]
+          //   }
+          // }
+        }],
       },
       {
         test: /.ts$/,

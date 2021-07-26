@@ -1,0 +1,13 @@
+:name{
+
+}
+
+.name {
+    /* 例如：八位颜色编码 需要转成六位颜色编码 */
+    color: rgba(18,52,86,0.47059);
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNzcy90ZXN0LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6Qiw2QkFBZ0I7SUFDaEIseUJBQWlCO09BQWpCLHNCQUFpQjtRQUFqQixxQkFBaUI7WUFBakIsaUJBQWlCO0FBQ3JCIiwiZmlsZSI6InJlc3VsdC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6bmFtZXtcclxuXHJcbn1cclxuXHJcbi5uYW1lIHtcclxuICAgIC8qIOS+i+Wmgu+8muWFq+S9jeminOiJsue8lueggSDpnIDopoHovazmiJDlha3kvY3popzoibLnvJbnoIEgKi9cclxuICAgIGNvbG9yOiAjMTIzNDU2Nzg7XHJcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcclxufSJdfQ== */

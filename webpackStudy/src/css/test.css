@@ -2,4 +2,9 @@
     background: res;
     height: 100px;
     width: 100px;
+    user-select: none;
+    color: #13245678;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
