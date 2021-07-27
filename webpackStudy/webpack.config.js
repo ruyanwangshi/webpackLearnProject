@@ -1,8 +1,8 @@
-const path = require("path");
+const path = require('path')
 
-const ConsoleLogOnBuildWebpackPlugin = require("./webpackPluginTest");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
+const ConsoleLogOnBuildWebpackPlugin = require('./webpackPluginTest')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 // interface Object{
 //  [entryName: string]: string | Array<string> // path 映射路径
@@ -10,7 +10,7 @@ const webpack = require("webpack");
 
 module.exports = {
   // 模式
-  mode: "development",
+  mode: 'development',
   // 会自动启用以下插件
   //   plugin: [
   //     new webpack.NamedModulesPlugin(),
@@ -44,7 +44,7 @@ module.exports = {
   // 最简单是设置为对象，filename：用于输出文件的文件名。path：目标输出目录的绝对路径。
   output: {
     // filename: "[name].[hash:8].js", // [hash]即将被弃用具体看官网(node:1908) [DEP_WEBPACK_TEMPLATE_PATH_PLUGIN_REPLACE_PATH_VARIABLES_HASH] DeprecationWarning: [hash] is now [fullhash] (also consider using [chunkhash] or [contenthash], see documentation for details)
-    filename: "[name].js",
+    filename: '[name].js',
     path: `${__dirname}/dist`, // 输出到磁盘对应目录下的绝对路径
     // 开发环境：Server和图片都是在localhost（域名）下
     // .image {
@@ -66,28 +66,57 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", {
-          loader: "css-loader",
-          options: {
-            importLoaders: 0
-          }
-        }, {
-          loader: "postcss-loader",
-          // options: {
-          //   postcssOptions: {
-          //     plugins: [
-          //       // require("autoprefixer")
-          //       // require('postcss-preset-env')
-          //       "postcss-preset-env"
-          //     ]
-          //   }
-          // }
-        }],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            // options: {
+            //   postcssOptions: {
+            //     plugins: [
+            //       // require("autoprefixer")
+            //       // require('postcss-preset-env')
+            //       "postcss-preset-env"
+            //     ]
+            //   }
+            // }
+          },
+        ],
       },
       {
         test: /.ts$/,
-        use: ["ts-loader"], // ts-loader 必须装typescript创建一个tsconfig.json文件
+        use: ['ts-loader'], // ts-loader 必须装typescript创建一个tsconfig.json文件
       },
+
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        type: 'asset',
+        generator: {
+          filename: 'img/[name].[hash:8][ext]',
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 100 * 1024,
+          },
+        },
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)$/,
+        type: 'asset',
+      }
+      // {
+      //   test: /\.(woff2?|eot|ttf|otf)$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     limit: 10000,
+      //     name: 'font/[name].[hash:8][ext]',
+      //   },
+      // },
     ],
   },
 
@@ -97,15 +126,15 @@ module.exports = {
   plugins: [
     new ConsoleLogOnBuildWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./index.html",
+      template: './index.html',
     }),
     new webpack.ProgressPlugin(),
   ],
 
   resolve: {
-    extensions: ["*", ".ts", "tsx", ".js"],
+    extensions: ['*', '.ts', 'tsx', '.js'],
   },
-};
+}
 
 // 模块解析
 // 引用模块require/import来进行导入。当打包时候：webpack使用 enhanced-resolve 来解析文件路径
@@ -127,8 +156,6 @@ module.exports = {
 // mainFields: ["browser","module","main"], // 当target属性设置为webpacker，web或者没有指定，指定该默认值默认值；
 // mainFields:["module", "main"] // 对于其它默认值的target(包括node),设置该默认值
 // 例如：test
-
-
 
 // 导出配置：
 // 1.导出函数
