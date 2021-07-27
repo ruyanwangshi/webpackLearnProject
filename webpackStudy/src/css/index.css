@@ -1,5 +1,11 @@
 @import url('./test.css');
+@import url('../font/iconfont.css');
 
 :testName{
 
+}
+
+.icon-style{
+    font-size: 30px;
+    color: red;
 }

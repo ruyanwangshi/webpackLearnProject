@@ -1,5 +1,17 @@
 import './css/index.css'
 import './testJs/test.ts'
+import Img from './img/test.jpg'
+
+function test() {
+  const img = new Image();
+  img.src = Img;
+  document.documentElement.appendChild(img)
+
+  const Icon = document.createElement('i')
+  Icon.className = 'iconfont icon-arrow-up-circle icon-style'
+  document.documentElement.appendChild(Icon)
+}
+test()
 
 // 测试可选链
 const obj = {
