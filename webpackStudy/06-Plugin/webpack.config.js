@@ -50,6 +50,10 @@ module.exports = {
             ]
         }),
         // 处理css转换为单独css文件
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin({
+            filename: "css/[name].css",
+            chunkFilename: "[id].css",
+            ignoreOrder: false,
+        })
     ]
 }

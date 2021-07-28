@@ -2,6 +2,8 @@ const path = require('path')
 
 const ConsoleLogOnBuildWebpackPlugin = require('./webpackPluginTest')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
 
 // interface Object{
@@ -44,7 +46,7 @@ module.exports = {
   // 最简单是设置为对象，filename：用于输出文件的文件名。path：目标输出目录的绝对路径。
   output: {
     // filename: "[name].[hash:8].js", // [hash]即将被弃用具体看官网(node:1908) [DEP_WEBPACK_TEMPLATE_PATH_PLUGIN_REPLACE_PATH_VARIABLES_HASH] DeprecationWarning: [hash] is now [fullhash] (also consider using [chunkhash] or [contenthash], see documentation for details)
-    filename: '[name].js',
+    filename: 'js/[name].js',
     path: `${__dirname}/dist`, // 输出到磁盘对应目录下的绝对路径
     // 开发环境：Server和图片都是在localhost（域名）下
     // .image {
@@ -124,15 +126,30 @@ module.exports = {
   // webpack插件是一个具有apply方法得javascript对象。apply方法会被webpack compiler
   // 调用，并且在整个编译声明周期都可以访问compiler对象
   plugins: [
+    new webpack.DefinePlugin({
+      BASE_URL: './',
+      TITLE: JSON.stringify('练习项目')
+    }),
+    new CleanWebpackPlugin(),
     new ConsoleLogOnBuildWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: 'index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public',
+          globOptions: {
+            ignore: ['**/test.txt']
+          }
+        }
+      ]
     }),
     new webpack.ProgressPlugin(),
   ],
 
   resolve: {
-    extensions: ['*', '.ts', 'tsx', '.js'],
+    extensions: ['*', '.js', '.ts', 'tsx'],
   },
 }
 
