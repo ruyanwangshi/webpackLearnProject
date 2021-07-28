@@ -1,3 +1,4 @@
+import './css/test.css'
 const envConfig = require('./env.js')
 
 console.log('测试plugin');

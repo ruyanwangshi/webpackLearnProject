@@ -3,12 +3,24 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     entry: './index.js',
     output: {
         filename: 'js/index.js',
         path: `${__dirname}/dist`
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"
+                ]
+            }
+        ]
     },
     plugins: [
         // 设置全局变量
@@ -36,6 +48,8 @@ module.exports = {
                     }
                 }
             ]
-        })
+        }),
+        // 处理css转换为单独css文件
+        new MiniCssExtractPlugin()
     ]
 }
