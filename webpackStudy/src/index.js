@@ -12,6 +12,7 @@ function test() {
   document.documentElement.appendChild(Icon)
 }
 test()
+console.log('更改测试')
 
 // 测试可选链
 const obj = {

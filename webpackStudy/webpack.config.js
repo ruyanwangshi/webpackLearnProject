@@ -4,6 +4,7 @@ const ConsoleLogOnBuildWebpackPlugin = require('./webpackPluginTest')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 
 // interface Object{
@@ -46,8 +47,9 @@ module.exports = {
   // 最简单是设置为对象，filename：用于输出文件的文件名。path：目标输出目录的绝对路径。
   output: {
     // filename: "[name].[hash:8].js", // [hash]即将被弃用具体看官网(node:1908) [DEP_WEBPACK_TEMPLATE_PATH_PLUGIN_REPLACE_PATH_VARIABLES_HASH] DeprecationWarning: [hash] is now [fullhash] (also consider using [chunkhash] or [contenthash], see documentation for details)
-    filename: 'js/[name].js',
+    filename: 'js/[name].bundle.js',
     path: `${__dirname}/dist`, // 输出到磁盘对应目录下的绝对路径
+    clean: true, // 清除输出文件夹内容和clean-webpack-plugin相似，但只支持 5.20.0+
     // 开发环境：Server和图片都是在localhost（域名）下
     // .image {
     //     background-image: url('./test.png');
@@ -69,7 +71,8 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          // 'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -130,7 +133,7 @@ module.exports = {
       BASE_URL: './',
       TITLE: JSON.stringify('练习项目')
     }),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new ConsoleLogOnBuildWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html',
@@ -144,6 +147,9 @@ module.exports = {
           }
         }
       ]
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
     }),
     new webpack.ProgressPlugin(),
   ],
