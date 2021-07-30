@@ -46,6 +46,7 @@ module.exports = {
   // 可以控制webpack如何向硬盘写入编译文件，备注：即使是多个入口，但也只有一个出口配置。
   // 最简单是设置为对象，filename：用于输出文件的文件名。path：目标输出目录的绝对路径。
   output: {
+    // 备注: manifest webpack通过manifest，可以追踪所有模块到输出bundlle之间的映射。
     // filename: "[name].[hash:8].js", // [hash]即将被弃用具体看官网(node:1908) [DEP_WEBPACK_TEMPLATE_PATH_PLUGIN_REPLACE_PATH_VARIABLES_HASH] DeprecationWarning: [hash] is now [fullhash] (also consider using [chunkhash] or [contenthash], see documentation for details)
     filename: 'js/[name].bundle.js',
     path: `${__dirname}/dist`, // 输出到磁盘对应目录下的绝对路径
