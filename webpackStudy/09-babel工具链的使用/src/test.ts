@@ -7,11 +7,16 @@ interface Animal {
 
 class Cat implements Animal {
   name: string;
-  say(name: string) {
-    console.log(name);
+  constructor(name:string) {
+    this.name = name
+  }
+  say() {
+    console.log(this.name);
   }
 }
 
-const cat = new Cat();
+const cat = new Cat('123');
 
-cat.say("123");
+const Pr = Promise.resolve(123)
+
+cat.say(123);

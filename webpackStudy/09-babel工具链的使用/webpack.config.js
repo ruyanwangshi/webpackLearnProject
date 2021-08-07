@@ -13,7 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /node_modules/, // 该属性移除一些不必要的转化，以防导致多重转换会出现问题
         use: [
           {
             loader: "babel-loader",
@@ -24,7 +24,8 @@ module.exports = {
         test: /\.ts$/,
         use: [
           {
-            loader: "ts-loader",
+            // loader: "ts-loader",
+            loader: "babel-loader",
           },
         ],
       },

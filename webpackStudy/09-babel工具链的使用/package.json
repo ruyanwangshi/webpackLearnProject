@@ -1,7 +1,9 @@
 {
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "serve": "webpack serve --open"
+    "build": "cnpm run ts & webpack --config webpack.config.js",
+    "serve": "webpack serve --open",
+    "ts-watch": "tsc --noEmit -w",
+    "ts": "tsc --noEmit"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
