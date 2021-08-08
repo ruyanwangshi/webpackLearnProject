@@ -12,54 +12,44 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?x$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
       {
-        test: /\.ts?x$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
-      //   {
-      //     use: /\.css$/,
-      //     exclude: /node_modules/,
-      //     test: [
-      //       "style-loader",
-      //       {
-      //         loader: "css-loader",
-      //         options: {
-      //           importLoaders: 1,
-      //         },
-      //       },
-      //       "postcss-loader",
-      //     ],
-      //   },
-      //   {
-      //     use: /\.less$/,
-      //     exclude: /node_modules/,
-      //     test: [
-      //       "style-loader",
-      //       {
-      //         loader: "css-loader",
-      //         options: {
-      //           importLoaders: 2,
-      //         },
-      //       },
-      //       "postcss-loader",
-      //       "less-loader",
-      //     ],
-      //   },
-      //   {
-      //     use: /\.js$/,
-      //     exclude: /node_modules/,
-      //     test: ["babel-loader"],
-      //   },
-      //   {
-      //     use: /\.ts?x$/,
-      //     exclude: /node_modules/,
-      //     test: ["babel-loader"],
-      //   },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+            },
+          },
+          "postcss-loader",
+        ],
+      },
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 2,
+            },
+          },
+          "postcss-loader",
+          "less-loader",
+        ],
+      },
     ],
   },
   plugins: [

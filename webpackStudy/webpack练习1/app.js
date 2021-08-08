@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 export default class App extends Component {
-  constructor(public message:string) {
+  constructor() {
     super();
     this.message = "hello react";
   }
