@@ -1,4 +1,4 @@
-import '../plublic/index.css';
+import '../public/less/index.less';
 
 import ReactDOM from "react-dom";
 import App from "../app.js";
