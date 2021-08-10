@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -9,6 +11,7 @@ module.exports = {
   output: {
     filename: 'static/js/index.js',
     path: `${__dirname}/dist`,
+    // publicPath: `/base` // cdn主输出口
   },
   module: {
     rules: [
@@ -60,12 +63,13 @@ module.exports = {
           },
         },
         generator: {
-          filename: 'static/[name][ext]'
+          filename: 'static/[name][ext]',
         },
       },
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
@@ -89,7 +93,11 @@ module.exports = {
     extensions: ['*', '.js', 'jsx', '.ts', 'tsx'],
   },
   devServer: {
-    contentBase: `${__dirname}/base`,
-    publicPath: `/`, // 默认本地服务是从/开始的是和outputpath路径一致
+    hot: true,
+    compress: true, //
+    contentBase: './',
+    // contentBase: `${__dirname}`, // 必须访问http://192/168.144.210:8080/base <script defer="" src="/base/static/js/index.js"></script>
+    // 确保 publicPath 总是以斜杠("/")开头和结尾。
+    // publicPath: `${__dirname}/base`, // 默认本地服务是从/开始的是和outputpath路径一致比如改成/base那么server输出路径为/base下静态资源文件 服务器地址+ pubilc地址生成地址
   },
 }
