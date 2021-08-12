@@ -8,9 +8,14 @@ const reactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    lodash: './src/lodash.js'
+    // lodash: 'lodash'
+  },
   output: {
-    filename: 'static/js/index.js',
+    // filename: 'static/js/index.js',
+    filename: '[name].build.js',
     path: `${__dirname}/dist`,
     // publicPath: `/`, // cdn主输出口
   },
