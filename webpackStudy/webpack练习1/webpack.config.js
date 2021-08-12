@@ -11,13 +11,12 @@ module.exports = {
   entry: {
     index: './src/index.js',
     lodash: './src/lodash.js'
-    // lodash: 'lodash'
   },
   output: {
     // filename: 'static/js/index.js',
     filename: '[name].build.js',
     path: `${__dirname}/dist`,
-    // publicPath: `/`, // cdn主输出口
+    // publicPath: `/`, // 目录输出口
   },
   module: {
     rules: [
@@ -82,7 +81,7 @@ module.exports = {
     //   // console.info(percentage, message, ...args)
     //   console.log(percentage, message, ...args)
     // }), // 公共
-    new reactRefreshPlugin(),
+    // new reactRefreshPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
