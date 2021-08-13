@@ -13,7 +13,7 @@ export default class App extends Component {
     return (
       <div className="testName">
         <div className="container">{this.message}</div>
-        <img src="./public/image/test.jpg" alt="" />
+        <img src="static/images/test.jpg" alt="" />
         <Test />
       </div>
     )

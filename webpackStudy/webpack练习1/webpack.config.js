@@ -3,14 +3,15 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const reactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+// const reactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: {
     index: './src/index.js',
-    lodash: './src/lodash.js'
+    lodash: './src/lodash.js',
   },
   output: {
     // filename: 'static/js/index.js',
@@ -24,6 +25,15 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+      {
+        test: /\.vue$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'vue-loader',
+          },
+        ],
       },
       {
         test: /\.tsx?$/,
@@ -76,15 +86,17 @@ module.exports = {
   plugins: [
     // new webpack.HotModuleReplacementPlugin(),
     // 可以监控各个hook执行的进度percentage，输出各个hook的名称和描述。
-    // new webpack.ProgressPlugin((percentage, message, ...args) => { 
+    // new webpack.ProgressPlugin((percentage, message, ...args) => {
     //   // e.g. Output each progress message directly to the console:
     //   // console.info(percentage, message, ...args)
     //   console.log(percentage, message, ...args)
     // }), // 公共
+    new webpack.ProgressPlugin(),
     // new reactRefreshPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
+    new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
@@ -102,12 +114,16 @@ module.exports = {
     }),
   ],
   resolve: {
+    alias: {
+      // 'vue$': 'vue/dist/vue.esm.js'
+      // 'vue$': 'vue/dist/vue.runtime.esm.js'
+    },
     extensions: ['*', '.js', 'jsx', '.ts', 'tsx'],
   },
   // [devServer.port]/[output.publicPath]/[output.filename] 进行访问。
   devServer: {
     hot: true,
-    compress: true, //
+    // compress: true, //
     /*contentBase: './',*/
     // contentBase: `/dist`, // 必须访问http://192/168.144.210:8080/base <script defer="" src="/base/static/js/index.js"></script>
     // 确保 publicPath 总是以斜杠("/")开头和结尾。

@@ -1,8 +1,14 @@
+import React from "react";
 import ReactDOM from "react-dom";
 import App from "../app.js";
-import React from "react";
 import '../public/less/index.less';
-console.log('测试')
+import Vue from 'vue';
+import Home from '../view/home.vue'
+
+new Vue({
+    // render: h => h('div',{},'hello vue')
+    render: h => h(Home)
+}).$mount('#root')
 
 
 function run(gen) {
