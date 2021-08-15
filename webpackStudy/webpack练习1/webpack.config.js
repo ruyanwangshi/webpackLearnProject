@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-// const reactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const reactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -115,8 +115,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      // 'vue$': 'vue/dist/vue.esm.js'
-      // 'vue$': 'vue/dist/vue.runtime.esm.js'
+      '@': './src'
     },
     extensions: ['*', '.js', 'jsx', '.ts', 'tsx'],
   },

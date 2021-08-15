@@ -6,7 +6,6 @@ import Vue from 'vue';
 import Home from '../view/home.vue'
 
 new Vue({
-    // render: h => h('div',{},'hello vue')
     render: h => h(Home)
 }).$mount('#root')
 
