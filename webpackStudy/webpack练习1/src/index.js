@@ -1,9 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "../app.js";
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import App from "../app.js";
 import '../public/less/index.less';
 import Vue from 'vue';
-import Home from '../view/home.vue'
+// const Home = () => import('../view/home.vue') 
+import Home from '../view/home.vue';
+import _ from 'lodash'
+
+console.log('test')
 
 new Vue({
     render: h => h(Home)
@@ -27,4 +31,4 @@ function run(gen) {
     })
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+// ReactDOM.render(<App />, document.getElementById("app"));
