@@ -1,4 +1,8 @@
 const TerserPlugin = require('terser-webpack-plugin')
+const PurifycssPlugin = require('purgecss-webpack-plugin')
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const resolvePath = require('./resolvePath')
+const glob = require('glob')
 module.exports = {
   mode: 'production',
   optimization: {
@@ -6,6 +10,7 @@ module.exports = {
       new TerserPlugin({
         extractComments: false,
       }),
+      new CssMinimizerPlugin()
     ],
     splitChunks: {
       chunks: 'all',
@@ -23,4 +28,10 @@ module.exports = {
     },
     runtimeChunk: true
   },
+  plugins: [
+    new PurifycssPlugin({
+      paths: glob.sync(`${resolvePath('src')}/**/*`,  { nodir: true })
+      // paths: glob.sync(`${resolvePath('./src')}/**/*`)
+    })
+  ]
 }

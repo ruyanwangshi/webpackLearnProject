@@ -1,22 +1,21 @@
-<template>
-  <div class="testClass">{{ message }}</div>
-</template>
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import './pubilc/css/base.less'
 
-<script>
-export default {
+import Home from '@/view/home/home.tsx';
+
+@Component({
   data() {
     return {
       message: 'hello vue',
     }
   },
+})
+export default class App extends Vue {
+  private message: string
+  render() {
+    return (<div class='test-name'>{this.message}
+    <Home/>
+    </div>)
+  }
 }
-</script>
-
-<style lang="less">
-// @import url('./pubilc/css/base.less');
-.testClass {
-    height: 100px;
-    width: 100px;
-    background: red;
-}
-</style>
