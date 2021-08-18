@@ -23,8 +23,11 @@ const baseConfig = (env) => {
       alias: {
         '@': resolvePath('./src'),
       },
-      extensions: ['*', '.js', '.ts', '.vue'],
+      extensions: ['*', '.js', '.ts', '.tsx', '.vue'],
     },
+    // externals:{
+    //   Vue: 'Vue'
+    // },
     module: {
       rules: [
         {

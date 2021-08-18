@@ -1,8 +1,10 @@
 {
   "scripts": {
     "dev": "webpack server --env development --config build/webpack.config.js --open",
-    "build:test": "webpack --env development --config build/webpack.config.js",
-    "build:prod": "webpack --env production --config build/webpack.config.js"
+    "build:test": "npm run tsc && webpack --env development --config build/webpack.config.js",
+    "build:prod": "npm run tsc && webpack --env production --config build/webpack.config.js",
+    "tscWatch": "tsc --noEmit -w",
+    "tsc": "tsc --noEmit"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

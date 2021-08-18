@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import './pubilc/css/base.less'
 
-import Home from '@/view/home/home.tsx';
+import Home from './src/view/home/home'
 
 @Component({
   data() {
