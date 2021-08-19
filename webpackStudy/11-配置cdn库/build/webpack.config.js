@@ -90,6 +90,7 @@ const baseConfig = (env) => {
       ],
     },
     plugins: [
+      new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({
         TITLE: JSON.stringify('hello vue'),
       }),
@@ -100,8 +101,14 @@ const baseConfig = (env) => {
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: 'pubilc',
+            from: resolvePath('pubilc'),
             to: 'static',
+            // globOptions: {
+            //   // dot: true,
+            //   // gitignore: true,
+            //   // 这个过滤调less文件
+            //   ignore: ['**/less/*'],
+            // },
           },
         ],
       }),

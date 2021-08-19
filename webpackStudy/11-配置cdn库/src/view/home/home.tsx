@@ -13,7 +13,8 @@ import './home.less'
 export default class Home extends Vue {
   private number: number
   changeNumber() {
-      this.number = 123
+      this.number = 456
+      console.log('测试')
   }
   render() {
     return (

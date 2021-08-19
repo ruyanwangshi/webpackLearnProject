@@ -31,7 +31,7 @@ module.exports = {
   },
   plugins: [
     new PurifycssPlugin({
-      paths: glob.sync(`${resolvePath('src')}/**/*`, { nodir: true }),
+      paths: glob.sync(`${resolvePath('./src')}/**/*`, { nodir: true }),
       // paths: glob.sync(`${resolvePath('./src')}/**/*`)
     }),
   ],
