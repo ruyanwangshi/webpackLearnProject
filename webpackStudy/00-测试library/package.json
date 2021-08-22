@@ -1,7 +1,10 @@
 {
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
   "devDependencies": {
     "html-webpack-plugin": "^5.3.2",
-    "mini-css-extract-plugin": "^2.2.0",
+    "mini-css-extnract-plugin": "^2.2.0",
     "webpack": "^5.50.0",
     "webpack-cli": "^4.8.0"
   }

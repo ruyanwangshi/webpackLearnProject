@@ -3,7 +3,7 @@ const PurifycssPlugin = require('purgecss-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const resolvePath = require('./resolvePath')
 const glob = require('glob')
-console.log(glob)
+// console.log(glob)
 module.exports = {
   mode: 'production',
   optimization: {
