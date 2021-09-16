@@ -1,32 +1,10 @@
-
-
-const webpack = require('webpack');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const pathResolve = require('./pathResolve/index.js')
 
 module.exports = {
-    mode: 'development',
+    context: pathResolve('.'),
     entry: './src/index.js',
     output: {
-        filename: 'js/[name].js',
-        path: `${__dirname}/dist`
-        // chunkFilename: '[name].chunk.js'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader']
-            }
-        ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: 'index.html'
-        })
-    ],
-    resolve: {
-        extensions: ["*",'.js']
+        filename: 'js/[name].[hash:8].js',
+        path: pathResolve('./dist')
     }
 }

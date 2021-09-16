@@ -1,4 +1,5 @@
 import Vue from 'vue'
+// 这辈子能不接触到vue2+ts的就都别接触了
 import Component from 'vue-class-component'
 
 import './home.less'

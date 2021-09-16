@@ -30,9 +30,9 @@ module.exports = {
     runtimeChunk: true,
   },
   plugins: [
-    new PurifycssPlugin({
-      paths: glob.sync(`${resolvePath('./src')}/**/*`, { nodir: true }),
-      // paths: glob.sync(`${resolvePath('./src')}/**/*`)
-    }),
+    // new PurifycssPlugin({
+    //   paths: glob.sync(`${resolvePath('./src')}/**/*`, { nodir: true }),
+    //   // paths: glob.sync(`${resolvePath('./src')}/**/*`)
+    // }),
   ],
 }

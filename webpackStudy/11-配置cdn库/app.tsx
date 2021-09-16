@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import './pubilc/less/base.less'
+// import './pubilc/less/base.less'
 import Home from '@/view/home/home'
 
 @Component({
